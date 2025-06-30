@@ -144,11 +144,12 @@
     </div>
 
 <script>
+    addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
             document.getElementById('news-image').src = imageUrl;
         }
-        
+       
         function addIssue(issueNumber, title, coverUrl, pdfUrl) {
             const archiveContainer = document.getElementById('archive-container');
             const issue = document.createElement('div');
@@ -178,8 +179,7 @@
             space.innerHTML = content;
             space.style.visibility = 'visible';
         }
-<script>
-   addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");     
+    
 </script>
 </body>
 </html>
