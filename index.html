@@ -1,0 +1,197 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \uc0\u1052 \u1091 \u1078 , [30.06.25 07:54]\
+<!DOCTYPE html>\
+<html lang="ru">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>\uc0\u1046 \u1091 \u1088 \u1085 \u1072 \u1083 </title>\
+    <style>\
+        @font-face \{\
+            font-family: 'HeaderFont';\
+            src: url('assets/fonts/header-font.ttf') format('truetype');\
+        \}\
+        @font-face \{\
+            font-family: 'TextFont';\
+            src: url('assets/fonts/text-font.ttf') format('truetype');\
+        \}\
+        \
+        body \{\
+            margin: 0;\
+            padding: 0;\
+            background-image: url('assets/images/background.jpg');\
+            background-size: cover;\
+            background-attachment: fixed;\
+            font-family: 'TextFont', sans-serif;\
+            color: #000;\
+        \}\
+        \
+        .header \{\
+            text-align: center;\
+            padding-top: 20px;\
+        \}\
+        \
+        .logo-container \{\
+            display: flex;\
+            justify-content: center;\
+            align-items: center;\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .logo-gif \{\
+            height: 100px;\
+        \}\
+        \
+        .age-restriction \{\
+            height: 30px;\
+            margin-left: 10px;\
+        \}\
+        \
+        .section-title \{\
+            font-family: 'HeaderFont', sans-serif;\
+            text-align: center;\
+            font-size: 24px;\
+            margin: 20px 0;\
+        \}\
+        \
+        .news-window \{\
+            background-image: url('assets/images/window.png');\
+            background-size: 100% 100%;\
+            margin: 0 auto;\
+            padding: 20px;\
+            max-width: 800px;\
+            box-sizing: border-box;\
+        \}\
+        \
+        .news-content \{\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .news-illustration \{\
+            max-width: 100%;\
+            height: auto;\
+            display: block;\
+            margin: 0 auto;\
+            max-height: 400px;\
+        \}\
+        \
+        .interactive-space \{\
+            min-height: 50px;\
+            margin: 30px 0;\
+            visibility: hidden;\
+        \}\
+        \
+        .archive-container \{\
+            display: flex;\
+            flex-wrap: wrap;\
+            justify-content: center;\
+            max-width: 1200px;\
+            margin: 0 auto;\
+        \}\
+        \
+        .issue \{\
+            width: calc(33.33% - 40px);\
+            margin: 20px;\
+            text-align: center;\
+            display: none;\
+        \}\
+        \
+        .issue-cover \{\
+            width: 100%;\
+            max-width: 200px;\
+            height: auto;\
+            aspect-ratio: 1/1.4142;\
+            margin: 0 auto;\
+            object-fit: contain;\
+        \}\
+        \
+        .issue-title \{\
+            margin: 10px 0;\
+            font-family: 'TextFont', sans-serif;\
+        \}\
+        \
+        .download-btn \{\
+            background-image: url('assets/images/button-texture.png');\
+            background-size: cover;\
+            border: none;\
+            padding: 10px 20px;\
+            margin-top: 10px;\
+            cursor: pointer;\
+            font-family: 'TextFont', sans-serif;\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <div class="header">\
+        <div class="logo-container">\
+            <img src="assets/images/logo.gif" alt="\uc0\u1051 \u1086 \u1075 \u1086 \u1090 \u1080 \u1087 " class="logo-gif">\
+            <img src="assets/images/18plus.png" alt="18+" class="age-restriction">\
+        </div>\
+    </div>\
+    \
+    <h2 class="section-title">\uc0\u1053 \u1054 \u1042 \u1054 \u1057 \u1058 \u1048 </h2>\
+    \
+    <div class="news-window">\
+        <div class="news-content" id="news-text">\
+            <!-- \uc0\u1058 \u1077 \u1082 \u1089 \u1090  \u1085 \u1086 \u1074 \u1086 \u1089 \u1090 \u1080  \u1073 \u1091 \u1076 \u1077 \u1090  \u1079 \u1076 \u1077 \u1089 \u1100  -->\
+        </div>\
+        <img src="assets/images/news/illustration1.jpg" alt="\uc0\u1048 \u1083 \u1083 \u1102 \u1089 \u1090 \u1088 \u1072 \u1094 \u1080 \u1103 " class="news-illustration" id="news-image">\
+    </div>\
+    \
+    <div class="interactive-space" id="interactive-space"></div>\
+    \
+    <h2 class="section-title">\uc0\u1040 \u1056 \u1061 \u1048 \u1042 </h2>\
+    \
+    <div class="archive-container" id="archive-container">\
+        <!-- \uc0\u1042 \u1099 \u1087 \u1091 \u1089 \u1082 \u1080  \u1078 \u1091 \u1088 \u1085 \u1072 \u1083 \u1072  \u1073 \u1091 \u1076 \u1091 \u1090  \u1076 \u1086 \u1073 \u1072 \u1074 \u1083 \u1103 \u1090 \u1100 \u1089 \u1103  \u1079 \u1076 \u1077 \u1089 \u1100  \u1076 \u1080 \u1085 \u1072 \u1084 \u1080 \u1095 \u1077 \u1089 \u1082 \u1080  -->\
+    </div>\
+\
+<script>\
+        // \uc0\u1060 \u1091 \u1085 \u1082 \u1094 \u1080 \u1103  \u1076 \u1083 \u1103  \u1076 \u1086 \u1073 \u1072 \u1074 \u1083 \u1077 \u1085 \u1080 \u1103  \u1085 \u1086 \u1074 \u1086 \u1089 \u1090 \u1080 \
+        function setNews(text, imageUrl) \{\
+            document.getElementById('news-text').innerHTML = text;\
+            document.getElementById('news-image').src = imageUrl;\
+        \}\
+        \
+        // \uc0\u1060 \u1091 \u1085 \u1082 \u1094 \u1080 \u1103  \u1076 \u1083 \u1103  \u1076 \u1086 \u1073 \u1072 \u1074 \u1083 \u1077 \u1085 \u1080 \u1103  \u1074 \u1099 \u1087 \u1091 \u1089 \u1082 \u1072  \u1078 \u1091 \u1088 \u1085 \u1072 \u1083 \u1072 \
+        function addIssue(issueNumber, title, coverUrl, pdfUrl) \{\
+            const archiveContainer = document.getElementById('archive-container');\
+            const issue = document.createElement('div');\
+            issue.className = 'issue';\
+            issue.style.display = 'block';\
+            \
+            issue.innerHTML = \
+                <img src="$\{coverUrl\}" alt="\uc0\u1042 \u1099 \u1087 \u1091 \u1089 \u1082  $\{issueNumber\}" class="issue-cover">\
+                <div class="issue-title">$\{title\}</div>\
+                <button class="download-btn" onclick="window.location.href='$\{pdfUrl\}'">\uc0\u1057 \u1082 \u1072 \u1095 \u1072 \u1090 \u1100 </button>\
+            ;\
+            \
+            archiveContainer.appendChild(issue);\
+            rearrangeIssues();\
+        \}\
+        \
+        function rearrangeIssues() \{\
+            const issues = document.querySelectorAll('.issue');\
+            const visibleIssues = Array.from(issues).filter(issue => issue.style.display === 'block');\
+            visibleIssues.forEach((issue, index) => \{\
+                issue.style.order = index + 1;\
+            \});\
+        \}\
+        \
+        // \uc0\u1055 \u1088 \u1080 \u1084 \u1077 \u1088  \u1076 \u1086 \u1073 \u1072 \u1074 \u1083 \u1077 \u1085 \u1080 \u1103  \u1087 \u1077 \u1088 \u1074 \u1086 \u1075 \u1086  \u1074 \u1099 \u1087 \u1091 \u1089 \u1082 \u1072 :\
+        // addIssue(1, "\uc0\u1042 \u1099 \u1087 \u1091 \u1089 \u1082  \u8470 1 - \u1042 \u1077 \u1089 \u1085 \u1072  2023", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");\
+        \
+        function setInteractiveContent(content) \{\
+            const space = document.getElementById('interactive-space');\
+            space.innerHTML = content;\
+            space.style.visibility = 'visible';\
+        \}\
+    </script>\
+</body>\
+</html>}
