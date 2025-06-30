@@ -136,7 +136,7 @@
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
     </div>
-    
+    <a href="archive.html" class="archive-button">АРХИВ</a>
     <h2 class="section-title">НОВОСТИ</h2>
     <div class="news-window">
         <div class="news-content" id="news-text">
@@ -158,7 +158,7 @@
             document.getElementById('news-image').src = imageUrl;
         }
        
-        function addIssue(issueNumber, title, coverUrl, pdfUrl) {
+        //function addIssue(issueNumber, title, coverUrl, pdfUrl) {
             const archiveContainer = document.getElementById('archive-container');
             const issue = document.createElement('div');
             issue.className = 'issue';
@@ -174,7 +174,7 @@
             rearrangeIssues();
         }
         
-        function rearrangeIssues() {
+        //function rearrangeIssues() {
             const issues = document.querySelectorAll('.issue');
             const visibleIssues = Array.from(issues).filter(issue => issue.style.display === 'block');
             visibleIssues.forEach((issue, index) => {
@@ -182,10 +182,10 @@
             });
         }
     
-    addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
-    addIssue(2, "Выпуск 2 - Лето 2026", "assets/issues/covers/issue2.jpg", "assets/issues/pdfs/issue2.pdf");
-    addIssue(3, "Выпуск 3 - Осень 2026", "assets/issues/covers/issue3.jpg", "assets/issues/pdfs/issue3.pdf");
-    addIssue(4, "Выпуск 4 - Зима 2027", "assets/issues/covers/issue4.jpg", "assets/issues/pdfs/issue4.pdf");
+    //addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
+    //addIssue(2, "Выпуск 2 - Лето 2026", "assets/issues/covers/issue2.jpg", "assets/issues/pdfs/issue2.pdf");
+    //addIssue(3, "Выпуск 3 - Осень 2026", "assets/issues/covers/issue3.jpg", "assets/issues/pdfs/issue3.pdf");
+    //addIssue(4, "Выпуск 4 - Зима 2027", "assets/issues/covers/issue4.jpg", "assets/issues/pdfs/issue4.pdf");
     addIssue(5, "Выпуск 5 - Весна 2027", "assets/issues/covers/issue5.jpg", "assets/issues/pdfs/issue5.pdf");
 
         function setInteractiveContent(content) {
