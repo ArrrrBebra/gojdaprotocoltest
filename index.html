@@ -31,20 +31,18 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
+            padding-top: 20px;
+            margin-bottom: 20px;
         }
         
         .logo-gif {
             height: 100px;
+            width: auto;
         }
         
         .age-restriction {
             height: 30px;
+            width: auto;
         }
         
         .section-title {
@@ -122,14 +120,21 @@
             overscroll-behavioe-x: contain;
             -webkit-overflow-scrolling:touch;
         }
+        @media (max-width: 600px) {
+            .logo-gif {
+                height: 80px;
+            }
+            .age-restriction{
+                height: 25px
+            }
+        }
+            
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo-container">
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
-        </div>
     </div>
     
     <h2 class="section-title">НОВОСТИ</h2>
