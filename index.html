@@ -21,21 +21,14 @@
             margin: 0;
             padding: 0;
             background-image: url('assets/images/background.jpg');
-            background-size: auto 100%;
-            background-position: center top;
+            background-size: cover;
             background-attachment: fixed;
             font-family: 'TextFont', sans-serif;
             color: #000;
             overflow-x: hidden;
             width: 100%;
         }
-
-        .main-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.7);
-            min-height: 100vh;
-        }
+        
         .header {
             display: flex;
             flex-direction: column;
@@ -139,7 +132,6 @@
     </style>
 </head>
 <body>
-    <div class="main-container">
          <div class="header">
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
@@ -157,7 +149,6 @@
             </div>
             <img src="assets/images/news/illustration1.jpg" alt="" class="news-illustration" id="news-image">
         </div>
-    </div>
     <div class="interactive-space" id="interactive-space"></div>
     
     <h2 class="section-title"></h2>
