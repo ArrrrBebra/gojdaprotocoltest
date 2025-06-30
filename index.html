@@ -116,6 +116,24 @@
             margin-top: 10px;
             cursor: pointer;
             font-family: 'TextFont', sans-serif;
+        .archive-link {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .archive-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            font-family: 'HeaderFont', sans-serif;
+            border-radius: 4px;
+            text-align: center;
+            min-witdth: 200px;
+        }
         body {
             overscroll-behavior-x: contain;
             -webkit-overflow-scrolling:touch;
@@ -136,7 +154,10 @@
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
     </div>
-    <a href="archive.html" class="archive-button">АРХИВ</a>
+   <div class="archive-link">
+       <a href="archive.html" class="archive-button">АРХИВ</a>
+       </div>
+
     <h2 class="section-title">НОВОСТИ</h2>
     <div class="news-window">
         <div class="news-content" id="news-text">
