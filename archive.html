@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АРХИВ</title>
+    <style>
+        @font-face {
+            font-family: 'HeaderFont';
+            src: url('assets/fonts/header-font.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'TextFont';
+            src: url('assets/fonts/text-font.ttf') format('truetype');
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/images/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'TextFont', sans-serif;
+            color: #000;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-gif {
+            height: 100px;
+            width: auto;
+        }
+        
+        .age-restriction {
+            height: 30px;
+            width: auto;
+        }
+        
+        .section-title {
+            font-family: 'HeaderFont', sans-serif;
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        
+        .archive-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .issue {
+            width: calc(33.33% - 40px);
+            margin: 20px;
+            text-align: center;
+            display: none;
+        
+        }
+        
+        .issue-cover {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 200/280;
+            object-fit: contain;
+        }
+        
+        .issue-title {
+            margin: 10px 0;
+            font-family: 'TextFont', sans-serif;
+        }
+        
+        .download-btn {
+            background-image: url('assets/images/button-texture.png');
+            background-size: cover;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-family: 'TextFont', sans-serif;
+        body {
+            overscroll-behavior-x: contain;
+            -webkit-overflow-scrolling:touch;
+        }
+        @media (max-width: 600px) {
+            .logo-gif {
+                height: 80px;
+            }
+            .age-restriction{
+                height: 25px
+            }
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="header">
+            <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
+            <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
+    </div>
+    
+    <h2 class="section-title">АРХИВ</h2>
+    
+    <div class="archive-container" id="archive-container"></div>
+
+<script>
+       
+        function addIssue(issueNumber, title, coverUrl, pdfUrl) {
+            const archiveContainer = document.getElementById('archive-container');
+            const issue = document.createElement('div');
+            issue.className = 'issue';
+            issue.style.display = 'block';
+            
+            issue.innerHTML = `
+                <img src="${coverUrl}" alt="Выпуск ${issueNumber}" class="issue-cover">
+                <div class="issue-title">${title}</div>
+                <button class="download-btn" onclick="window.location.href='${pdfUrl}'"></button>
+         `;
+            
+            archiveContainer.appendChild(issue);
+            rearrangeIssues();
+        }
+        
+        function rearrangeIssues() {
+            const issues = document.querySelectorAll('.issue');
+            const visibleIssues = Array.from(issues).filter(issue => issue.style.display === 'block');
+            visibleIssues.forEach((issue, index) => {
+                issue.style.order = index + 1;
+            });
+        }
+    
+    addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
+    addIssue(2, "Выпуск 2 - Лето 2026", "assets/issues/covers/issue2.jpg", "assets/issues/pdfs/issue2.pdf");
+    addIssue(3, "Выпуск 3 - Осень 2026", "assets/issues/covers/issue3.jpg", "assets/issues/pdfs/issue3.pdf");
+    addIssue(4, "Выпуск 4 - Зима 2027", "assets/issues/covers/issue4.jpg", "assets/issues/pdfs/issue4.pdf");
+    addIssue(5, "Выпуск 5 - Весна 2027", "assets/issues/covers/issue5.jpg", "assets/issues/pdfs/issue5.pdf");
+
+</script>
+</body>
+</html>
