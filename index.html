@@ -91,7 +91,8 @@
             width: calc(33.33% - 40px);
             margin: 20px;
             text-align: center;
-           //display: none;
+            display: none;
+        
         }
         
         .issue-cover {
@@ -155,9 +156,9 @@
             issue.style.display = 'block';
             
             issue.innerHTML = 
-                <img src="$\{coverUrl\}" alt="Выпуск $\{issueNumber\}" class="issue-cover">
-                <div class="issue-title">$\{title\}</div>
-                <button class="download-btn" onclick="window.location.href='$\{pdfUrl\}'">Скачать</button>\
+                <img src="${coverUrl}" alt="Выпуск ${issueNumber}" class="issue-cover">
+                <div class="issue-title">${title}</div>
+                <button class="download-btn" onclick="window.location.href='${pdfUrl}'">Скачать</button>
             ;
             
             archiveContainer.appendChild(issue);
@@ -171,6 +172,7 @@
                 issue.style.order = index + 1;
             });
         }
+    
     addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
 
         function setInteractiveContent(content) {
