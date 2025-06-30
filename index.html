@@ -22,6 +22,8 @@
             background-attachment: fixed;
             font-family: 'TextFont', sans-serif;
             color: #000;
+            overflow-x: hidden;
+            width: 100%;
         }
         
         .header {
@@ -96,8 +98,10 @@
         }
         
         .issue-cover {
-            width: 200px;
-            height: 280px;
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: 200/280;
             object-fit: contain;
         }
         
@@ -114,6 +118,9 @@
             margin-top: 10px;
             cursor: pointer;
             font-family: 'TextFont', sans-serif;
+        body {
+            overscroll-behavioe-x: contain;
+            -webkit-overflow-scrolling:touch;
         }
     </style>
 </head>
