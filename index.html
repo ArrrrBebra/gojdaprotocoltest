@@ -21,14 +21,21 @@
             margin: 0;
             padding: 0;
             background-image: url('assets/images/background.jpg');
-            background-size: cover;
+            background-size: auto 100%;
+            background-position: center top;
             background-attachment: fixed;
             font-family: 'TextFont', sans-serif;
             color: #000;
             overflow-x: hidden;
             width: 100%;
         }
-        
+
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            min-height: 100vh;
+        }
         .header {
             display: flex;
             flex-direction: column;
@@ -89,53 +96,7 @@
             margin: 30px 0;
             visibility: hidden;
         }
-        
-        //.archive-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .issue {
-            width: calc(33.33% - 40px);
-            margin: 20px;
-            text-align: center;
-            display: none;
-        
-        }
-        
-        .issue-cover {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            aspect-ratio: 200/280;
-            object-fit: contain;
-        }
-        
-        .issue-title {
-            margin: 10px 0;
-            font-family: 'TextFont', sans-serif;
-        }
-        
-        .download-btn {
-            background-image: url('assets/images/button-texture.png');
-            background-size: cover;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            cursor: pointer;
-            font-family: 'TextFont', sans-serif;
-        }
-        
-        .arachive-link {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            width: 100%;
-            position: relative;
-            left: 0;
+    
         }
         .archive-link {
             display: flex;
@@ -156,19 +117,6 @@
             text-decoration: underline wavy;
         }
 
-        //.archive-button {
-            display: block;
-            width: max-content;
-            margin: 0 auto;
-            padding: 12px 24px;
-            background-color: #000;
-            color: white;
-            text-decoration: none;
-            font-family: 'HeaderFont', sans-serif;
-            border-radius: 4px;
-            text-align: center;
-            min-witdth: 200px;
-        }
         body {
             overscroll-behavior-x: contain;
             -webkit-overflow-scrolling:touch;
@@ -191,30 +139,28 @@
     </style>
 </head>
 <body>
-    <div class="header">
+    <div class="main-container">
+         <div class="header">
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
-    </div>
-   <div class="archive-link">
-       <a href="archive.html">АРХИВ</a>
-       </div>
-
-    <h2 class="section-title">НОВОСТИ</h2>
-    <div class="news-window">
-        <div class="news-content" id="news-text">
-               <p>Тимофей как кавалер</p>
-<p>Ваще вне конкуренции</p>
-<p>Не урод, при деньгах</p>
-<p>И лютая потенция!</p>
         </div>
-        <img src="assets/images/news/illustration1.jpg" alt="" class="news-illustration" id="news-image">
+        <div class="archive-link">
+           <a href="archive.html">АРХИВ</a>
+        </div>
+        <h2 class="section-title">НОВОСТИ</h2>
+        <div class="news-window">
+            <div class="news-content" id="news-text">
+               <p>Тимофей как кавалер</p>
+                <p>Ваще вне конкуренции</p>
+                <p>Не урод, при деньгах</p>
+                <p>И лютая потенция!</p>
+            </div>
+            <img src="assets/images/news/illustration1.jpg" alt="" class="news-illustration" id="news-image">
+        </div>
     </div>
-    
     <div class="interactive-space" id="interactive-space"></div>
     
     <h2 class="section-title"></h2>
-    
-    <div class="archive-container" id="archive-container"></div>
 
 <script>
     
@@ -223,36 +169,6 @@
             document.getElementById('news-image').src = imageUrl;
         }
        
-        //function addIssue(issueNumber, title, coverUrl, pdfUrl) {
-            const archiveContainer = document.getElementById('archive-container');
-            const issue = document.createElement('div');
-            issue.className = 'issue';
-            issue.style.display = 'block';
-            
-            issue.innerHTML = `
-                <img src="${coverUrl}" alt="Выпуск ${issueNumber}" class="issue-cover">
-                <div class="issue-title">${title}</div>
-                <button class="download-btn" onclick="window.location.href='${pdfUrl}'">Скачать</button>
-         `;
-            
-            archiveContainer.appendChild(issue);
-            rearrangeIssues();
-        }
-        
-        //function rearrangeIssues() {
-            const issues = document.querySelectorAll('.issue');
-            const visibleIssues = Array.from(issues).filter(issue => issue.style.display === 'block');
-            visibleIssues.forEach((issue, index) => {
-                issue.style.order = index + 1;
-            });
-        }
-    
-    //addIssue(1, "Выпуск 1 - Весна 2026", "assets/issues/covers/issue1.jpg", "assets/issues/pdfs/issue1.pdf");
-    //addIssue(2, "Выпуск 2 - Лето 2026", "assets/issues/covers/issue2.jpg", "assets/issues/pdfs/issue2.pdf");
-    //addIssue(3, "Выпуск 3 - Осень 2026", "assets/issues/covers/issue3.jpg", "assets/issues/pdfs/issue3.pdf");
-    //addIssue(4, "Выпуск 4 - Зима 2027", "assets/issues/covers/issue4.jpg", "assets/issues/pdfs/issue4.pdf");
-    addIssue(5, "Выпуск 5 - Весна 2027", "assets/issues/covers/issue5.jpg", "assets/issues/pdfs/issue5.pdf");
-
         function setInteractiveContent(content) {
             const space = document.getElementById('interactive-space');
             space.innerHTML = content;
