@@ -132,6 +132,72 @@
             overscroll-behavior-x: contain;
             -webkit-overflow-scrolling:touch;
         }
+        .age-ver-overlay {
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            font-family: 'TextFont', sans-serif;
+        }
+
+        .age-ver-content {
+            max-width: 600px;
+            padding: 30px;
+            background-color: rgba(50, 50, 50, 0,8);
+            border-radius: 10px;
+            border: 1px solid #fff;
+        }
+
+        .age-warning-text {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .age-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .age-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: underline;
+            display: inline-block;
+        }
+
+        .age-btn-yes {
+            background-color: #f00000;
+            color: white;
+        }
+
+         .age-btn-no {
+            background-color: #f00000;
+            color: white;
+        }
+        
+        .age-btn:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            display: none;
+        }
         @media (max-width: 600px) {
             .logo-gif {
                 height: 80px;
@@ -150,6 +216,20 @@
     </style>
 </head>
 <body>
+         <div class="age-ver-overlay" id="ageVerification">
+             <div class="age-ver-content"
+                 <div class="age-warning-text"
+                 Содержимое сайта наполнено ненормативной лексикой, субъективными мнениями авторов, не предназначено для распространения среди несовершеннолетних. Наш коллектив не имеет целью оскорбление чьих-либо чувств.
+                 </div>
+                 <div class="age-question">Вам уже есть 18 лет?</div>
+                     <div class="age-buttons">
+                         <a href"#" class="age-btn age-btn-yes" id="confirmAge">ДА</a>
+                         <a href"https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/" class="age-btn age-btn-no" id="rejectAge">НЕТ</a>
+                     </div>
+                 </div>
+             </div>
+    
+    <div class="main-content" id="mainContent"
          <div class="header">
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
@@ -176,9 +256,33 @@
                 <p>Исходя из этого, призываем вас рассказывать о журнале кентам и кентяркам, помогать красить заборы бабушкам, играть в салки с кирпичами, присылать нам свои наблюдения, статьи, фото, картины и истории, писать оды самому длинному в мире метромосту. И помойтесь уже наконец!</p>
                 <p>БЛЯ.КРЮ — за наш и НАШ Новосибирск!</p>
             </div>
-
-<script>
+    </div>
     
+<script>
+    const questions = [ 
+        "Тебе уже есть 18 лет?",
+        "По твоему паспроту уже можно купить пивасик?",
+        "Последнее предупрежение: контент для взсрослых! Тебе точно больше 18?"
+        ];
+    let currentStep = 0;
+    const ageQuestion = document.getElementById('ageQuestion');
+    const confirmBtn = document.getElementById('confirmAge');
+
+    confirmBtn.addEventListener('click', function() {
+        if (currenrStep < questions.length) {
+            ageQuestion.textContent = questions[currentStep];
+        } else {
+            document.getElementById('ageVerification').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            localStorage.setItem('ageVerified', 'true');
+        }
+    });
+
+    if(localStorage.getItem('ageVerified') === 'true) {
+        document.getElementById('ageVerification').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    }
+       
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
             document.getElementById('news-image').src = imageUrl;
