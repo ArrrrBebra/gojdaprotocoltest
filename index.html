@@ -332,7 +332,7 @@
         function sendEmail() {
             const email = 'BCREW@adress.com';
             const subject = 'Предложение';
-            const body = `ВАЖНО! Если в окне получатель пусто, то введи туда BCREW@adress.com\n\nПривет, команда БЛЯ.КРЮ!\n\nХочу предложить вам:\n\n...\n\n--\n\nС уважением,`;
+            const body = `ВАЖНО! Если окно с адресом получателя пустое, то введи туда: BCREW@adress.com\n\nПривет, команда БЛЯ.КРЮ!\n\nХочу предложить вам:\n\n...\n\n--\n\nС уважением,`;
 
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
