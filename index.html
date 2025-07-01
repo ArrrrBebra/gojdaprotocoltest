@@ -132,7 +132,7 @@
             overscroll-behavior-x: contain;
             -webkit-overflow-scrolling:touch;
         }
-        .age-ver-overlay {
+        .age-verification-overlay {
             position: fixed;
             top:0;
             left:0;
@@ -149,7 +149,7 @@
             font-family: 'TextFont', sans-serif;
         }
 
-        .age-ver-content {
+        .age-verification-content {
             max-width: 600px;
             padding: 30px;
             background-color: rgba(50, 50, 50, 0,8);
@@ -176,17 +176,17 @@
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: underline;
+            text-decoration: none;
             display: inline-block;
         }
 
         .age-btn-yes {
-            background-color: #f00000;
+            background-color: #444447;
             color: white;
         }
 
          .age-btn-no {
-            background-color: #f00000;
+            background-color: #444447;
             color: white;
         }
         
@@ -216,9 +216,9 @@
     </style>
 </head>
 <body>
-         <div class="age-ver-overlay" id="ageVerification">
-             <div class="age-ver-content"
-                 <div class="age-warning-text"
+         <div class="age-verification-overlay" id="ageVerification">
+             <div class="age-verification-content">
+                 <div class="age-warning-text">
                  Содержимое сайта наполнено ненормативной лексикой, субъективными мнениями авторов, не предназначено для распространения среди несовершеннолетних. Наш коллектив не имеет целью оскорбление чьих-либо чувств.
                  </div>
                  <div class="age-question">Вам уже есть 18 лет?</div>
@@ -229,7 +229,7 @@
                  </div>
              </div>
     
-    <div class="main-content" id="mainContent"
+    <div class="main-content" id="mainContent">
          <div class="header">
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
@@ -269,6 +269,8 @@
     const confirmBtn = document.getElementById('confirmAge');
 
     confirmBtn.addEventListener('click', function() {
+        currentStep++;
+        
         if (currenrStep < questions.length) {
             ageQuestion.textContent = questions[currentStep];
         } else {
