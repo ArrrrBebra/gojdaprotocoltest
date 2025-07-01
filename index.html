@@ -248,7 +248,7 @@
              <div class="age-verification-content">
                  <div class="age-warning-text">
                  Содержимое сайта наполнено ненормативной лексикой, субъективными мнениями авторов, не предназначено для распространения среди несовершеннолетних. Наш коллектив не имеет целью оскорбление
-                     чьих-либо чувств.
+                     <span class="no-wrap">чьих-либо</span> чувств.
                  </div>
                  <div class="age-question" id="ageQuestion">Тебе уже есть 18 лет?</div>
                      <div class="age-buttons" id="ageButtons">
@@ -332,13 +332,13 @@
         function sendEmail(){
             const email = 'sosnove@gmail.com';
             const subject = 'Предложение новости';
-            const body = `<b>ВАЖНО! Если в окне получатель пусто, то введи туда BCREW@adress.com</b>\n\nПривет, команда <b>БЛЯ.КРЮ!</b>\n\nХочу предложить вам новость:\n\n...\n\n--\n\nС уважением,`;
+            const body = `**ВАЖНО!** _Если в окне получатель пусто, то введи туда BCREW@adress.com_\n\nПривет, команда *БЛЯ.КРЮ*!\n\nХочу предложить вам новость:\n\n...\n\n--\n\nС уважением,`;
 
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             setTimeout(() => {
                 if (!document.hidden) {
-                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать email <b>БЛЯ.КРЮ</b>?');
+                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать email *БЛЯ.КРЮ?*');
                     if (confirmed) {
                         navigator.clipboard.writeText(email);
                         alert('Email скопирован! ' + email);
