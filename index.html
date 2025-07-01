@@ -233,8 +233,8 @@
                  </div>
                  <div class="age-question">Вам уже есть 18 лет?</div>
                      <div class="age-buttons">
-                         <a href"#" class="age-btn age-btn-yes" id="confirmAge">ДА</a>
-                         <a href"https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/" class="age-btn age-btn-no" id="rejectAge">НЕТ</a>
+                         <button class="age-btn age-btn-yes" id="confirmAge">ДА</button>
+                         <a href"https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4" class="age-btn age-btn-no" id="rejectAge">НЕТ</a>
                      </div>
                  </div>
              </div>
@@ -275,6 +275,7 @@
         "По твоему паспроту уже можно купить пивасик?",
         "Последнее предупрежение: контент для взсрослых! Тебе точно больше 18?"
         ];
+        
         let clickCount = 0;
         const ageQuestion = document.getElementById('ageQuestion');
         const ageButtons = document.getElementById('ageButtons');
