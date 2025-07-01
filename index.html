@@ -161,6 +161,7 @@
             font-size: 20px;
             margin-bottom: 20px;
             font-weight: bold;
+        }
 
         .age-warning-text {
             margin-bottom: 30px;
@@ -181,18 +182,18 @@
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .age-btn-yes {
             background-color: #444447;
             color: white;
-            order: 1;
         }
 
          .age-btn-no {
             background-color: #444447;
             color: white;
-             order: 2;
         }
 
         .reversed .age-btn-yes {
@@ -292,6 +293,7 @@
             document.getElementById('ageVerification').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
         }
+        
         confirmBtn.addEventListener('click', function(e) {
             e.preventDefault();
             clickCount++;
@@ -304,6 +306,7 @@
                 ageButtons.classList.add('reversed');
             }
              else if (clickCount >= 3) {
+                 sessionStorage.setItem('ageVerified', 'true');
                  document.getElementById('ageVerification').style.display = 'none';
                  document.getElementById('mainContent').style.display = 'block';
              }
