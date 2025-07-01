@@ -338,7 +338,7 @@
 
             setTimeout(() => {
                 if (!document.hidden) {
-                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать email *БЛЯ.КРЮ?*');
+                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать Email?');
                     if (confirmed) {
                         navigator.clipboard.writeText(email);
                         alert('Email скопирован! ' + email);
