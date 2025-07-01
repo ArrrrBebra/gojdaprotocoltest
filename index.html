@@ -181,8 +181,6 @@
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .age-btn-yes {
@@ -304,7 +302,11 @@
                  localStorage.setItem('ageVerified','true');
              }
         });
-    
+    if(localStorage.getItem('ageVerified') === 'true'){
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('ageVerification').style.display = 'none';
+    }
+    });
     
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
