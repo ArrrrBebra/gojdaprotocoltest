@@ -237,7 +237,7 @@
                  <div class="age-question" id="ageQuestion">Вам уже есть 18 лет?</div>
                      <div class="age-buttons" id="ageButtons">
                          <button class="age-btn age-btn-yes" id="confirmAge">ДА</button>
-                         <a href"https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4" class="age-btn age-btn-no" id="rejectAge">НЕТ</a>
+                         <a href="https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4" class="age-btn age-btn-no" id="rejectAge">НЕТ</a>
                      </div>
                  </div>
              </div>
@@ -285,13 +285,13 @@
         const confirmBtn = document.getElementById('confirmAge');
         const rejectBtn = document.getElementById('rejectAge');
 
-        if(!sessionStorage.getItem(ageVerified')){
+        if(!sessionStorage.getItem('ageVerified')){
              document.getElementById('ageVerification').style.display = 'flex';
                 document.getElementById('mainContent').style.display = 'none';
         } else {
             document.getElementById('ageVerification').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
-
+        }
         confirmBtn.addEventListener('click', function(e) {
             e.preventDefault();
             clickCount++;
