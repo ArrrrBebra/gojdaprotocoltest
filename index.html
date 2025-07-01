@@ -265,7 +265,7 @@
         </div>
         <div class="nav-links">
            <a href="archive.html" class="nav-link">АRХИV</a>
-            <a href="#" onclick="sendEmail()" class="nav-link">ПРЕDЛОЖИТЬ НОВОСТЬ</a>
+            <a href="#" onclick="sendEmail()" class="nav-link">СВЯЗАТЬСЯ С НАМИ</a>
         </div>
         <h2 class="section-title">ЧО НОВОГО?</h2>
         <div class="news-window">
@@ -331,8 +331,8 @@
     
         function sendEmail() {
             const email = 'BCREW@adress.com';
-            const subject = 'Предложение новости';
-            const body = `**ВАЖНО!** _Если в окне получатель пусто, то введи туда BCREW@adress.com_\n\nПривет, команда *БЛЯ.КРЮ*!\n\nХочу предложить вам новость:\n\n...\n\n--\n\nС уважением,`;
+            const subject = 'Предложение';
+            const body = `ВАЖНО! Если в окне получатель пусто, то введи туда BCREW@adress.com\n\nПривет, команда БЛЯ.КРЮ!\n\nХочу предложить вам:\n\n...\n\n--\n\nС уважением,`;
 
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
