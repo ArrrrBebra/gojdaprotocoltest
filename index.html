@@ -252,7 +252,7 @@
         </div>
         <div class="nav-links">
            <a href="archive.html" class="nav-link">АRХИV</a>
-            <a href="mailto:sosnove07@gmail.com?subject=Предложение новости &body=Привет, БЛЯ.КРЮ!%0D%0A%0D%0AХочу предложить вам новость:%0D%0A%0D%0A--%0D%0AС уважением," class="nav-link">ПРЕDЛОЖИТЬ НОВОСТЬ</a>
+            <a href="#" onclick="sendEmail()" class="nav-link">ПРЕDЛОЖИТЬ НОВОСТЬ</a>
         </div>
         <h2 class="section-title">ЧО НОВОГО?</h2>
         <div class="news-window">
@@ -314,6 +314,25 @@
              }
         });
     });
+
+    
+        function sendEmail(){
+            const email = 'sosnove@gmail.com';
+            const subject = 'Предложение новости';
+            const body = `Привет, команда БЛЯ.КРЮ!\n\nХочу предложить вам новость:\n\n...\n\n--\n\nС уважением,`;
+
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            setTimeout(() => {
+                if (!document.hidden) {
+                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать email БЛЯ.КРЮ?');
+                    if (confirmed) {
+                        navigator.clipboard.writeText(email);
+                        alert('Email скопирован! ' + email);
+                    }
+                }
+            }, 300);
+        }
     
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
