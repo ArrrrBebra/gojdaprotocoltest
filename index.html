@@ -259,6 +259,7 @@
     </div>
     
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
     const questions = [ 
         "Тебе уже есть 18 лет?",
         "По твоему паспроту уже можно купить пивасик?",
@@ -271,7 +272,7 @@
     confirmBtn.addEventListener('click', function() {
         currentStep++;
         
-        if (currenrStep < questions.length) {
+        if (currentStep < questions.length) {
             ageQuestion.textContent = questions[currentStep];
         } else {
             document.getElementById('ageVerification').style.display = 'none';
@@ -280,11 +281,12 @@
         }
     });
 
-    if(localStorage.getItem('ageVerified') === 'true) {
+    if(localStorage.getItem('ageVerified') === 'true') {
         document.getElementById('ageVerification').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
     }
-       
+    });
+    
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
             document.getElementById('news-image').src = imageUrl;
