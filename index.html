@@ -285,6 +285,13 @@
         const confirmBtn = document.getElementById('confirmAge');
         const rejectBtn = document.getElementById('rejectAge');
 
+        if(!sessionStorage.getItem(ageVerified')){
+             document.getElementById('ageVerification').style.display = 'flex';
+                document.getElementById('mainContent').style.display = 'none';
+        } else {
+            document.getElementById('ageVerification').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+
         confirmBtn.addEventListener('click', function(e) {
             e.preventDefault();
             clickCount++;
@@ -299,11 +306,8 @@
              else if (clickCount >= 3) {
                  document.getElementById('ageVerification').style.display = 'none';
                  document.getElementById('mainContent').style.display = 'block';
-                 localStorage.setItem('ageVerified','true');
              }
         });
-    }
-    });
     
         function setNews(text, imageUrl) {
             document.getElementById('news-text').innerHTML = text;
