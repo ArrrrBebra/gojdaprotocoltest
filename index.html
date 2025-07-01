@@ -108,26 +108,30 @@
             visibility: hidden;
         }
         
-        .archive-link {
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            margin: 40px 0;
-            font-family: 'TextFont', sans-serif;
-        }
-        .archive-link a {
-            color: #000;
-            text-decoration: underline;
-            font-size: 1.1em;
-            font-weight: normal;
-            padding: 5px 0;
-            transition: color 0.3s;
-        }
-        .archive-link a:hover {
-            color: #000;
-            text-decoration: underline wavy;
-        }
-
+           .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        color: #000;
+        text-decoration: underline;
+        font-size: 1.1em;
+        font-weight: normal;
+        padding: 5px 0;
+        transition: all 0.3s;
+        font-family: 'TextFont', sans-serif;
+        white-space: nowrap;
+    }
+    
+    .nav-link:hover {
+        color: #000;
+        text-decoration: underline wavy;
+    }
         body {
             overscroll-behavior-x: contain;
             -webkit-overflow-scrolling:touch;
@@ -246,8 +250,9 @@
             <img src="assets/images/logo.gif" alt="Логотип" class="logo-gif">
             <img src="assets/images/18plus.png" alt="18+" class="age-restriction">
         </div>
-        <div class="archive-link">
-           <a href="archive.html">АРХИВ</a>
+        <div class="nav-links">
+           <a href="archive.html" class="nav-link">АРХИВ</a>
+            <a href="mailto:sosnove07@gmail.com?subject=Предложение новости &body=Привет, БЛЯ.КРЮ!%0D%0A%0D%0AХочу предложить вам новость:%0D%0A%0D%0A[Опишите вашу новость здесь]%0D%0A%0D%0A--%0D%0AС уважением," class="nav-link">ПРЕДЛОЖИТЬ НОВОСТЬ</a>
         </div>
         <h2 class="section-title">ЧО НОВОГО?</h2>
         <div class="news-window">
