@@ -329,7 +329,7 @@
     });
 
     
-        function sendEmail(){
+        function sendEmail() {
             const email = 'BCREW@adress.com';
             const subject = 'Предложение новости';
             const body = `**ВАЖНО!** _Если в окне получатель пусто, то введи туда BCREW@adress.com_\n\nПривет, команда *БЛЯ.КРЮ*!\n\nХочу предложить вам новость:\n\n...\n\n--\n\nС уважением,`;
@@ -338,11 +338,7 @@
 
             setTimeout(() => {
                 if (!document.hidden) {
-                    const confirmed = confirm('Твой почтовый ящик не открылся. Скопировать Email?');
-                    if (confirmed) {
-                        navigator.clipboard.writeText(email);
-                        alert('Email скопирован! ' + email);
-                    }
+                    alert(`Твой почтовый ящик не открылся.\n\nОтправь письмо вручную: ${email}!`);
                 }
             }, 300);
         }
