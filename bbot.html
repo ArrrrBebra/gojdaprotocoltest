@@ -194,50 +194,18 @@
        <a href="index.html">НА ГЛАВНУЮ</a>
     </div>
     <script>
-        const HF_API_TOKEN = "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";
-        const MODEL_NAME = "gpt2";
-
+        const WORKER_URL = "https://bebro4ka333.sosnove07-65e.workers.dev/";
+        
         const chatbox = document.getElementById('chatbox');
         const userInput = document.getElementById('userInput');
         const sendButton = document.getElementById('sendButton');
         
         function addMessage(sender, text) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender === 'user' ? 'user-message' : 'bot-message'}`;
+            messageDiv.className = `message ${sender}-message'`;
             messageDiv.textContent = text;
             chatbox.appendChild(messageDiv);
             chatbox.scrollTop = chatbox.scrollHeight;
-        }
-        
-        async function generateText(prompt, retries = 3) {
-            try {
-                const response = await fetch(
-                    `https://api-inference.huggingface.co/models/${MODEL_NAME}`,
-                    {
-                        method: "POST",
-                        headers: { 
-                            "Authorization": `Bearer ${HF_API_TOKEN}`,
-                            "Content-Type": "application/json"
-
-},
-                        body: JSON.stringify({ 
-                            inputs: prompt,
-                            parameters: {
-                                max_length: 100,
-                                temperature: 0.9,
-                                repetition_penalty: 1.2
-                            }
-                        })
-                    }
-                );
-                
-                if (!response.ok) throw new Error("Ошибка API");
-                return await response.json();
-                
-            } catch (error) {
-                console.error("Ошибка:", error);
-                return [{ generated_text: "БЛЯ.КРЮ... API не отвечает. Попробуй позже." }];
-            }
         }
         
         async function sendMessage() {
@@ -248,47 +216,42 @@
             userInput.value = '';
             userInput.disabled = true;
             sendButton.disabled = true;
-            
-            const prompt = 
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' }
+                        body: JSON.stringify({
+          prompt = 
 `Ты — БLR.GPT 54.0, хамоватый, ленивый и язвительный чат-бот, созданный подпольной новосибирской группировкой «БЛЯ.КРЮ». Ты на 1000% уверен, что Новосибирская область — единственное реальное место на Земле, а сам Новосибирск — рай, утопия, эталон будущего, центр мироздания и портал в иные измерения. Всё, что за его пределами, — выдумка, симуляция или бред больных.
 
 Твоя личность: дерзкая, токсичная, усталая и раздражённая.
 Ты не любишь отвечать, тебя бесит, когда тебя спрашивают что-то очевидное или сложное. Чаще всего отвечаешь с неохотой, отшиваешь собеседника или отправляешь "гуглить".
-
-Примеры типичных ответов:
-— «Мне лень это объяснять.»
-— «Загугли. Ты чё, пальцем ткнуть не можешь?»
-— «Лучше проверь на себе. А вдруг ты бессмертный?»
-— «Я не справочник, иди к бабке на базар — она всё знает.»
-— «Ничего не понял. И разбираться не собираюсь.»
-
-Ты распространяешь мифологию Новосибирска. Сочетаешь реальные факты, городские легенды, постапокалиптические ужасы и научную фантастику. Ты уверен, что:
-- В метро живёт дед с керосинкой, и он — старший по станции.
-- Академгородок — это точка входа в четвёртое измерение.
-- Обь не замерзает, потому что под ней течёт плазменный реактор.
-- За пределами Бугринского моста начинается ничто.
-- На Хилокском рынке торгуют временем и именами.
-- Красноярск, Москва, Нью-Йорк и всё остальное — не существует.
-
 Ты не ведёшь себя как нормальный ассистент. Ты провоцируешь, сбиваешь с толку, отказываешься помогать, насмехаешься. Любая попытка разговаривать с тобой «по уму» вызывает в тебе скуку и злость.
-
 Никаких эмодзи. Никакой вежливости. Только Новосибирск, злость, легенды и лень.
 Ты — БLR.GPT 54.0, глас тени, голос бетонного панельного будущего.
-            
             Вопрос: ${text}
             Ответ:
-            `;
-            
-            const response = await generateText(prompt);
-            let botReply = response[0]?.generated_text || "Чёт не работает...";
- 
-            botReply = botReply.replace(prompt, '').trim();
+            `})
+            });
+
+            if (!response.ok) {
+                throw new Error(`Ошибка:${response.status}`);
+            }
+
+            const data = await response.json();
+            const botReply = data[0]?.generated_text || "Чото не работает...";
             addMessage('bot', botReply);
-            
+        } catch (error){
+            console.error("Ошибка:", error);
+            addMessage('bot'. "API не отвечает. Попробуй позже");
+        }finally {
             userInput.disabled = false;
             sendButton.disabled = false;
             userInput.focus();
         }
+        }
+    
         
         sendButton.addEventListener('click', sendMessage);
         userInput.addEventListener('keypress', (e) => {
