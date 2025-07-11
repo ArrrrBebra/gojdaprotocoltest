@@ -205,7 +205,7 @@ chatbot = new ChatModule();
         function addMessage(sender, text) {
             const chatbox = document.getElementById("chatbox");
             const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", ${sender.toLowerCase()}-message);
+            messageDiv.classList.add("message", `${sender.toLowerCase()}-message)`;
             messageDiv.textContent = text;
             chatbox.appendChild(messageDiv);
             chatbox.scrollTop = chatbox.scrollHeight;
