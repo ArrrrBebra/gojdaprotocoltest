@@ -68,7 +68,7 @@
         }
 
         .chatbox {
-            width: 100%;
+            max-width: 800px;
             height: 400px;
             max-height: 60vh;
             background-image: url('assets/images/window.png');
@@ -193,14 +193,14 @@
  <div class="back-button">
        <a href="index.html">НА ГЛАВНУЮ</a>
     </div>
-        <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.1.0"></script>
+        <script src="https://unpkg.com/@mlc-ai/web-llm@0.1.0"></script>
     <script>
         let chatbot;
         const chatHistory = [];
 
         async function initBot() {
             try {
-            const { ChatModule } = await import("https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.1.0");
+            const { ChatModule } = await import("https://unpkg.com/@mlc-ai/web-llm@0.1.0");
 chatbot = new ChatModule();
             addMessage('БLR', 'Ща, погоди...');
             await chatbot.load("RedPajama-INCITE-Chat-3B-v1-q4f32_1");
