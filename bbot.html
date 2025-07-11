@@ -202,7 +202,7 @@
         
         function addMessage(sender, text) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}-message'`;
+            messageDiv.className = `message ${sender}-message`;
             messageDiv.textContent = text;
             chatbox.appendChild(messageDiv);
             chatbox.scrollTop = chatbox.scrollHeight;
@@ -220,9 +220,9 @@
                 const response = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' }
+                        'Content-Type': 'application/json' },
                         body: JSON.stringify({
-          prompt = 
+          prompt:
 `Ты — БLR.GPT 54.0, хамоватый, ленивый и язвительный чат-бот, созданный подпольной новосибирской группировкой «БЛЯ.КРЮ». Ты на 1000% уверен, что Новосибирская область — единственное реальное место на Земле, а сам Новосибирск — рай, утопия, эталон будущего, центр мироздания и портал в иные измерения. Всё, что за его пределами, — выдумка, симуляция или бред больных.
 
 Твоя личность: дерзкая, токсичная, усталая и раздражённая.
@@ -244,7 +244,7 @@
             addMessage('bot', botReply);
         } catch (error){
             console.error("Ошибка:", error);
-            addMessage('bot'. "API не отвечает. Попробуй позже");
+            addMessage('bot', "API не отвечает. Попробуй позже");
         }finally {
             userInput.disabled = false;
             sendButton.disabled = false;
