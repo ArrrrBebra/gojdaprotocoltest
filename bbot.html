@@ -193,49 +193,152 @@
  <div class="back-button">
        <a href="index.html">НА ГЛАВНУЮ</a>
     </div>
-        <script src="https://unpkg.com/@mlc-ai/web-llm@0.1.0"></script>
     <script>
-        let chatbot;
-        const chatHistory = [];
+        > Dymek Koteczekowicz:
+Вот полный рабочий код для интеграции с Hugging Face Inference API, адаптированный под вашего хамоватого новосибирского бота:
 
-        async function initBot() {
-            try {
-            const { ChatModule } = await import("https://unpkg.com/@mlc-ai/web-llm@0.1.0");
-chatbot = new ChatModule();
-            addMessage('БLR', 'Ща, погоди...');
-            await chatbot.load("RedPajama-INCITE-Chat-3B-v1-q4f32_1");
-             document.getElementById('userInput').placeholder = "Написать";
-            document.getElementById('userInput').disabled = false;
-             document.getElementById('sendButton').disabled = false;
-            addMessage('БLR', 'Чо такое?');
-               }
-            catch (error) {
-                addMessage('БLR',`Ошибка загрузки: ${error.message}`);
-                console.error(error);
-            }
+`html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLYA.KRYU.NSK.9000</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            background: #000 url('https://i.imgur.com/JXQ8WQx.jpg') center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
         }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+        .chatbox {
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user-message {
+            background: rgba(30, 70, 90, 0.8);
+            margin-left: auto;
+        }
+        .bot-message {
+            background: rgba(70, 30, 30, 0.8);
+            margin-right: auto;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #userInput {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        #sendButton {
+            padding: 0 25px;
+            background: #d62222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chatbox" id="chatbox">
+            <div class="message bot-message">Чё надо? Я BLYA.KRYU.NSK.9000. Пиши вопрос, если хочешь получить грубый ответ.</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Спроси что-нибудь..." autocomplete="off">
+            <button id="sendButton">Отправить</button>
+        </div>
+    </div>
 
+    <script>
+
+        const HF_API_TOKEN = "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";
+        const MODEL_NAME = "gpt2";
+
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+        
         function addMessage(sender, text) {
-            const chatbox = document.getElementById('chatbox');
             const messageDiv = document.createElement('div');
-            messageDiv.classname = `message ${sender.toLowerCase()}-message`;
+            messageDiv.className = `message ${sender}-message`;
             messageDiv.textContent = text;
             chatbox.appendChild(messageDiv);
             chatbox.scrollTop = chatbox.scrollHeight;
         }
+        
+        async function generateText(prompt) {
+            try {
+                const response = await fetch(
+                    `https://api-inference.huggingface.co/models/${MODEL_NAME}`,
+                    {
+                        method: "POST",
+                        headers: { 
+                            "Authorization": `Bearer ${HF_API_TOKEN}`,
 
+},
+                        body: JSON.stringify({ 
+                            inputs: prompt,
+                            parameters: {
+                                max_length: 100,
+                                temperature: 0.9,
+                                repetition_penalty: 1.2
+                            }
+                        })
+                    }
+                );
+                
+                if (!response.ok) throw new Error("Ошибка API");
+                return await response.json();
+                
+            } catch (error) {
+                console.error("Ошибка:", error);
+                return [{ generated_text: "БЛЯ.КРЮ... API не отвечает. Попробуй позже." }];
+            }
+        }
+        
+        // Обработчик отправки сообщения
         async function sendMessage() {
-            const userInput = document.getElementById('userInput');
             const text = userInput.value.trim();
             if (!text) return;
-
-            addMessage('Ты', text);
+            
+            addMessage('user', text);
             userInput.value = '';
             userInput.disabled = true;
-            document.getElementById('sendButton').disabled = true;
-
-            try {
-                 const prompt = 
+            sendButton.disabled = true;
+            
+            const prompt = 
 `Ты — БLR.GPT 54.0, хамоватый, ленивый и язвительный чат-бот, созданный подпольной новосибирской группировкой «БЛЯ.КРЮ». Ты на 1000% уверен, что Новосибирская область — единственное реальное место на Земле, а сам Новосибирск — рай, утопия, эталон будущего, центр мироздания и портал в иные измерения. Всё, что за его пределами, — выдумка, симуляция или бред больных.
 
 Твоя личность: дерзкая, токсичная, усталая и раздражённая.
@@ -260,34 +363,25 @@ chatbot = new ChatModule();
 
 Никаких эмодзи. Никакой вежливости. Только Новосибирск, злость, легенды и лень.
 Ты — БLR.GPT 54.0, глас тени, голос бетонного панельного будущего.
-
-Вопрос: ${text}
-Ответ:`
-            ;
-      
-            const reply = await chatbot.generate(prompt, { max_gen_len: 150, temperature: 0.9, top_p: 0,9 });
-            addMessage('БLR', reply);
+            
+            Вопрос: ${text}
+            Ответ:
+            `;
+            
+            const response = await generateText(prompt);
+            let botReply = response[0]?.generated_text || "Чёт не работает...";
+ 
+            botReply = botReply.replace(prompt, '').trim();
+            addMessage('БLR', botReply);
+            
+            userInput.disabled = false;
+            sendButton.disabled = false;
+            userInput.focus();
         }
-
-      
-            const shouldGlitch = Math.random() < 0.05;
-            if (shouldGlitch) {
-                const glitches = [
-                    "亲爱的用户，我不知道发生了什么，请救命！【来自 BLYA.KRYU 协会】",
-                    "कृपया हमें बचाओ, यहाँ सब कुछ गलत है। - BLYA हेल्प डेस्क",
-                    "錯誤：核心損壞。撤離已開始。"
-                ];
-                const glitch = glitches[Math.floor(Math.random() * glitches.length)];
-                addMessage('БLR', glitch);
-                return;
-            }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initBot();
-            document.getElementById('sendButton').addEventListener('click', sendMessage);
-            document.getElementById('userInput').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') sendMessage();
-            });
+        
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
         });
     </script>
 </body>
