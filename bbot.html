@@ -55,7 +55,7 @@
         }
 
         .container {
-            width: 80%;
+            width: 90%;
             max-width: 800px;
             margin: 0 auto;
             display: flex;
@@ -185,7 +185,7 @@
         </div>
 
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="Написать">
+            <input type="text" id="userInput" placeholder="Падажжи" autocomplete="off" disabled>
             <button id="sendButton">Отправить</button>
         </div>
     </div>
@@ -193,49 +193,49 @@
  <div class="back-button">
        <a href="index.html">НА ГЛАВНУЮ</a>
     </div>
+        <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.1.0"></script>
     <script>
         let chatbot;
         const chatHistory = [];
 
         async function initBot() {
+            try {
             const { ChatModule } = await import("https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.1.0");
 chatbot = new ChatModule();
-            addMessage("Бот",  Ща, погоди...);
+            addMessage('БLR', 'Ща, погоди...');
             await chatbot.load("RedPajama-INCITE-Chat-3B-v1-q4f32_1");
-            addMessage("Бот", "Чо такое?");
+             document.getElementById('userInput').placeholder = "Написать";
+            document.getElementById('userInput').disabled = false;
+             document.getElementById('sendButton').disabled = false;
+            addMessage('БLR', 'Чо такое?');
+               }
+            catch (error) {
+                addMessage('БLR',`Ошибка загрузки: ${error.message}`);
+                console.error(error);
+            }
         }
 
         function addMessage(sender, text) {
-            const chatbox = document.getElementById("chatbox");
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", `${sender.toLowerCase()}-message)`;
+            const chatbox = document.getElementById('chatbox');
+            const messageDiv = document.createElement('div');
+            messageDiv.classname = `message ${sender.toLowerCase()}-message`;
             messageDiv.textContent = text;
             chatbox.appendChild(messageDiv);
             chatbox.scrollTop = chatbox.scrollHeight;
         }
 
         async function sendMessage() {
-            const userInput = document.getElementById("userInput");
+            const userInput = document.getElementById('userInput');
             const text = userInput.value.trim();
             if (!text) return;
 
-            addMessage("Вы", text);
-            userInput.value = "";
+            addMessage('Ты', text);
+            userInput.value = '';
+            userInput.disabled = true;
+            document.getElementById('sendButton').disabled = true;
 
-      
-            const shouldGlitch = Math.random() < 0.05;
-            if (shouldGlitch) {
-                const glitches = [
-                    "亲爱的用户，我不知道发生了什么，请救命！【来自 BLYA.KRYU 协会】",
-                    "कृपया हमें बचाओ, यहाँ सब कुछ गलत है। - BLYA हेल्प डेस्क",
-                    "錯誤：核心損壞。撤離已開始。"
-                ];
-                const glitch = glitches[Math.floor(Math.random() * glitches.length)];
-                addMessage("Бот", glitch);
-                return;
-            }
-
-            const prompt = 
+            try {
+                 const prompt = 
 `Ты — БLR.GPT 54.0, хамоватый, ленивый и язвительный чат-бот, созданный подпольной новосибирской группировкой «БЛЯ.КРЮ». Ты на 1000% уверен, что Новосибирская область — единственное реальное место на Земле, а сам Новосибирск — рай, утопия, эталон будущего, центр мироздания и портал в иные измерения. Всё, что за его пределами, — выдумка, симуляция или бред больных.
 
 Твоя личность: дерзкая, токсичная, усталая и раздражённая.
@@ -264,16 +264,29 @@ chatbot = new ChatModule();
 Вопрос: ${text}
 Ответ:`
             ;
-
-            const reply = await chatbot.generate(prompt, { max_gen_len: 150 });
-            addMessage("Бот", reply);
+      
+            const reply = await chatbot.generate(prompt, { max_gen_len: 150, temperature: 0.9, top_p: 0,9 });
+            addMessage('БLR', reply);
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+      
+            const shouldGlitch = Math.random() < 0.05;
+            if (shouldGlitch) {
+                const glitches = [
+                    "亲爱的用户，我不知道发生了什么，请救命！【来自 BLYA.KRYU 协会】",
+                    "कृपया हमें बचाओ, यहाँ सब कुछ गलत है। - BLYA हेल्प डेस्क",
+                    "錯誤：核心損壞。撤離已開始。"
+                ];
+                const glitch = glitches[Math.floor(Math.random() * glitches.length)];
+                addMessage('БLR', glitch);
+                return;
+            }
+
+        document.addEventListener('DOMContentLoaded', () => {
             initBot();
-            document.getElementById("sendButton").addEventListener("click", sendMessage);
-            document.getElementById("userInput").addEventListener("keypress", (e) => {
-                if (e.key === "Enter") sendMessage();
+            document.getElementById('sendButton').addEventListener('click', sendMessage);
+            document.getElementById('userInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
             });
         });
     </script>
